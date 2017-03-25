@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">HooHoo!0</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/schmeet</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping resource="co/schmeet/app/models/EventInstances.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/Account.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/UserGuardian.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/Institutions.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/InstitutionUser.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/UserRelation.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/Payments.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/Events.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/EventCategories.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/UserEventInstanceReminders.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/InstitutionPermissions.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/Groups.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/InstitutionRoles.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/EventAppraisalValue.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/EventPermissions.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/EventUser.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/EventAppraisalType.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/EventInstanceUser.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/GroupPermissions.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/Users.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/Relations.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/GroupUser.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/GroupRoles.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/EventAppraisals.hbm.xml" />
+        <mapping resource="co/schmeet/app/models/EventRole.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>
