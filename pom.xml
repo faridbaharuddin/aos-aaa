@@ -5,7 +5,7 @@
 	<artifactId>aosaaa</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Anatomy of a System: Authentication, Authorisation, Accounting</name>
+	<name>Anatomy of a System: Authentication, Authorisation, and Accounting</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
