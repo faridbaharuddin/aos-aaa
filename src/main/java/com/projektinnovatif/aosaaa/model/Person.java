@@ -32,57 +32,19 @@ public class Person implements Serializable, BaseModel {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date dateofbirth;
 	
-	private String addresscity;
-
-	private String addresscountry;
-
-	private String addresspostal;
-
-	private String addressstreet;
-
 	private String email;
 	
-	private String homecontactnumber;
-	
-	private String mobilecontactnumber;
-
-	@Lob
-	private String drugallergies;
-
-	private String emergencynumber;
-
-	private String emergencyperson;
-
-	private String emergencyrelationship;
-
 	private String firstname;
-
-	@Lob
-	private String foodallergies;
 
 	@JsonIgnore
 	private Byte isactive;
 
 	private String lastname;
 
-	@Lob
-	private String medicalconditions;
-	
 	private String fullname;
-
-	private Byte profilecompletenessscore;
 
 	private String profileimageurl;
 
-	@Transient
-	private String authtoken;
-	
-	@Transient
-	private String role;
-	
-	@Transient
-	private String subscriptiontype;
-	
 	public Person() {
 	}
 
@@ -110,38 +72,6 @@ public class Person implements Serializable, BaseModel {
 		this.dateofbirth = dateofbirth;
 	}
 
-	public String getAddresscity() {
-		return this.addresscity;
-	}
-
-	public void setAddresscity(String addresscity) {
-		this.addresscity = addresscity;
-	}
-
-	public String getAddresscountry() {
-		return this.addresscountry;
-	}
-
-	public void setAddresscountry(String addresscountry) {
-		this.addresscountry = addresscountry;
-	}
-
-	public String getAddresspostal() {
-		return this.addresspostal;
-	}
-
-	public void setAddresspostal(String addresspostal) {
-		this.addresspostal = addresspostal;
-	}
-
-	public String getAddressstreet() {
-		return this.addressstreet;
-	}
-
-	public void setAddressstreet(String addressstreet) {
-		this.addressstreet = addressstreet;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -150,68 +80,12 @@ public class Person implements Serializable, BaseModel {
 		this.email = email;
 	}
 
-	public String getHomecontactnumber() {
-		return this.homecontactnumber;
-	}
-
-	public void setHomecontactnumber(String contactnumber) {
-		this.homecontactnumber = contactnumber;
-	}
-	
-	public String getMobilecontactnumber() {
-		return mobilecontactnumber;
-	}
-
-	public void setMobilecontactnumber(String mobilecontactnumber) {
-		this.mobilecontactnumber = mobilecontactnumber;
-	}
-
-	public String getDrugallergies() {
-		return this.drugallergies;
-	}
-
-	public void setDrugallergies(String drugallergies) {
-		this.drugallergies = drugallergies;
-	}
-
-	public String getEmergencynumber() {
-		return this.emergencynumber;
-	}
-
-	public void setEmergencynumber(String emergencynumber) {
-		this.emergencynumber = emergencynumber;
-	}
-
-	public String getEmergencyperson() {
-		return this.emergencyperson;
-	}
-
-	public void setEmergencyperson(String emergencyperson) {
-		this.emergencyperson = emergencyperson;
-	}
-
-	public String getEmergencyrelationship() {
-		return this.emergencyrelationship;
-	}
-
-	public void setEmergencyrelationship(String emergencyrelationship) {
-		this.emergencyrelationship = emergencyrelationship;
-	}
-
 	public String getFirstname() {
 		return this.firstname;
 	}
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
-	}
-
-	public String getFoodallergies() {
-		return this.foodallergies;
-	}
-
-	public void setFoodallergies(String foodallergies) {
-		this.foodallergies = foodallergies;
 	}
 
 	public String getFullname() {
@@ -230,22 +104,6 @@ public class Person implements Serializable, BaseModel {
 		this.lastname = lastname;
 	}
 
-	public String getMedicalconditions() {
-		return this.medicalconditions;
-	}
-
-	public void setMedicalconditions(String medicalconditions) {
-		this.medicalconditions = medicalconditions;
-	}
-
-	public Byte getProfilecompletenessscore() {
-		return this.profilecompletenessscore;
-	}
-
-	public void setProfilecompletenessscore(Byte profilecompletenessscore) {
-		this.profilecompletenessscore = profilecompletenessscore;
-	}
-
 	public String getProfileimageurl() {
 		return this.profileimageurl;
 	}
@@ -262,30 +120,6 @@ public class Person implements Serializable, BaseModel {
 	@Override
 	public void setIsactive(byte isactive) {
 		this.isactive = isactive;
-	}
-
-	public String getAuthtoken() {
-		return authtoken;
-	}
-
-	public void setAuthtoken(String authtoken) {
-		this.authtoken = authtoken;
-	}
-	
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
-	public String getSubscriptiontype() {
-		return subscriptiontype;
-	}
-
-	public void setSubscriptiontype(String subscriptiontype) {
-		this.subscriptiontype = subscriptiontype;
 	}
 
 	@Override

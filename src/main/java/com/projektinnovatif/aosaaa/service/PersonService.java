@@ -54,7 +54,6 @@ public class PersonService {
 	
 	@Transactional
 	public Person addPerson (Person person) {
-		person.setProfilecompletenessscore(this.calculateCompletenessScore(person));
 		person.setIsactive((byte)1);
 		return personDao.add(person);
 	}
@@ -86,45 +85,9 @@ public class PersonService {
 		personInDb.setFirstname(person.getFirstname());
 		personInDb.setLastname(person.getLastname());
 		personInDb.setFullname(person.getFirstname() + " " + person.getLastname());
-		
-		personInDb.setAddressstreet(!Validator.isNullOrEmpty(person.getAddressstreet()) ? person.getAddressstreet() : null);
-		personInDb.setAddresscity(!Validator.isNullOrEmpty(person.getAddresscity()) ? person.getAddresscity() : null);
-		personInDb.setAddresscountry(!Validator.isNullOrEmpty(person.getAddresscountry()) ? person.getAddresscountry() : null);
-		personInDb.setAddresspostal(!Validator.isNullOrEmpty(person.getAddresspostal()) ? person.getAddresspostal() : null);
-		personInDb.setHomecontactnumber(!Validator.isNullOrEmpty(person.getHomecontactnumber()) ? person.getHomecontactnumber() : null);
-		personInDb.setMobilecontactnumber(!Validator.isNullOrEmpty(person.getMobilecontactnumber()) ? person.getMobilecontactnumber() : null);
-		
-		// Medical condition fields
-		personInDb.setFoodallergies(!Validator.isNullOrEmpty(person.getFoodallergies()) ? person.getFoodallergies() : null);
-		personInDb.setDrugallergies(!Validator.isNullOrEmpty(person.getDrugallergies()) ? person.getDrugallergies() : null);
-		personInDb.setMedicalconditions(!Validator.isNullOrEmpty(person.getMedicalconditions()) ? person.getMedicalconditions() : null);
-		personInDb.setEmergencyperson(!Validator.isNullOrEmpty(person.getEmergencyperson()) ? person.getEmergencyperson() : null);
-		personInDb.setEmergencyrelationship(!Validator.isNullOrEmpty(person.getEmergencyrelationship()) ? person.getEmergencyrelationship() : null);
-		personInDb.setEmergencynumber(!Validator.isNullOrEmpty(person.getEmergencynumber()) ? person.getEmergencynumber() : null);
-		
-		// Calculate completeness
-		personInDb.setProfilecompletenessscore(this.calculateCompletenessScore(personInDb));
-		
+	
 		personDao.update(personInDb);
 		return true;
-	}
-	
-	private byte calculateCompletenessScore(Person person) {
-		return (byte) ((!Validator.isNullOrEmpty(person.getFirstname()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getLastname()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getProfileimageurl()) ? 10 : 0)
-						+ (!Validator.isNullOrEmpty(person.getAddressstreet()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getAddresscity()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getAddresscountry()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getAddresspostal()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getHomecontactnumber()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getMobilecontactnumber()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getFoodallergies()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getDrugallergies()) ? 10 : 0)
-						+ (!Validator.isNullOrEmpty(person.getMedicalconditions()) ? 10 : 0)
-						+ (!Validator.isNullOrEmpty(person.getEmergencyperson()) ? 10 : 0)
-						+ (!Validator.isNullOrEmpty(person.getEmergencyrelationship()) ? 5 : 0)
-						+ (!Validator.isNullOrEmpty(person.getEmergencynumber()) ? 10 : 0));
 	}
 	
 	@Transactional

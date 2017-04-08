@@ -43,9 +43,9 @@ public class AuthNAuthController {
 		{			
 			Account account = authNAuthService.signInWithUsernamePassword(signInForm, request);
 			if (account != null) {
-				if (account.getIsactivated() == (byte)1 && account.getCurrentauthtoken() != null) {
+				if (account.getIsactivated() == (byte)1) {
 					HashMap<String, String> dataReturn = new HashMap<String, String>();
-					dataReturn.put("authtoken", account.getCurrentauthtoken());
+					dataReturn.put("authtoken", ""); // TODO: Return auth token
 					dataReturn.put("subscriptiontype", account.getAccounttier());
 					dataReturn.put("role", account.getAccountrole());
 					return ResponseBuilder.OK(dataReturn);

@@ -15,11 +15,11 @@
 
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
-		<beans:property name="driverClassName" value="<database driver>" />
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
  		 
-		<beans:property name="url" value="<database host details>"/>
-		<beans:property name="username" value="<database username>" /> 
-		<beans:property name="password" value="<database password>" /> 
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/aosaaa"/>
+		<beans:property name="username" value="aosaaauser" /> 
+		<beans:property name="password" value="P@ssw0rd" /> 
 	</beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
@@ -46,10 +46,10 @@
 	</beans:bean>
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<beans:property name="host" value="<email host>" />
-		<beans:property name="port" value="<email port>" />
-		<beans:property name="username" value="<email username>" />
-		<beans:property name="password" value="<email password>" />
+		<beans:property name="host" value="smtp.gmail.com" />
+		<beans:property name="port" value="587" />
+		<beans:property name="username" value="aos.aaa.project@gmail.com" />
+		<beans:property name="password" value="P@ssw0rdP@ssw0rd" />
 		<beans:property name="javaMailProperties">
 			<beans:props>
 				<beans:prop key="mail.transport.protocol">smtp</beans:prop>

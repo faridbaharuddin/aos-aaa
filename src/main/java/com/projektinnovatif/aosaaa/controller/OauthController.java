@@ -62,7 +62,7 @@ public class OauthController {
 				Account account = oauthService.signInOrSignUpWithOauth(googleInfo, request);
 				if (account != null) {
 					HashMap<String, String> dataReturn = new HashMap<String, String>();
-					dataReturn.put("authtoken", account.getCurrentauthtoken());
+					dataReturn.put("authtoken", ""); // TODO: Add auth token
 					dataReturn.put("subscriptiontype", account.getAccounttier());
 					dataReturn.put("role", account.getAccountrole());
 					return ResponseBuilder.OK(dataReturn);
@@ -108,7 +108,7 @@ public class OauthController {
 				Account account = oauthService.signInOrSignUpWithOauth(facebookInfo, request);
 				if (account != null) {
 					HashMap<String, String> dataReturn = new HashMap<String, String>();
-					dataReturn.put("authtoken", account.getCurrentauthtoken());
+					dataReturn.put("authtoken", ""); // TODO: Get Auth token
 					dataReturn.put("subscriptiontype", account.getAccounttier());
 					dataReturn.put("role", account.getAccountrole());
 					return ResponseBuilder.OK(dataReturn);

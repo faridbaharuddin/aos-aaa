@@ -17,7 +17,7 @@ public class Permissioninfo implements Serializable {
 	@Id
 	private Long id;
 
-	private String associatedrole;
+	private Long roleid;
 
 	private String description;
 
@@ -25,7 +25,7 @@ public class Permissioninfo implements Serializable {
 
 	private byte isobjectspecific;
 
-	private String value;
+	private String title;
 
 	public Permissioninfo() {
 	}
@@ -38,12 +38,12 @@ public class Permissioninfo implements Serializable {
 		this.id = id;
 	}
 
-	public String getAssociatedrole() {
-		return this.associatedrole;
+	public Long getRoleid() {
+		return this.roleid;
 	}
 
-	public void setAssociatedrole(String associatedrole) {
-		this.associatedrole = associatedrole;
+	public void setRoleid(Long roleid) {
+		this.roleid = roleid;
 	}
 
 	public String getDescription() {
@@ -70,12 +70,12 @@ public class Permissioninfo implements Serializable {
 		this.isobjectspecific = isobjectspecific;
 	}
 
-	public String getValue() {
-		return this.value;
+	public String getTitle() {
+		return this.title;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }

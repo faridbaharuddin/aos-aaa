@@ -67,26 +67,26 @@ public class PermissionDao extends BaseDao<Permission> {
 	}
 	
 	
-	public boolean addRolePermissions (Long accountid, String role, Long resourceid) {
+	public boolean addRolePermissions (Long accountid, Long roleid, Long resourceid) {
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.YEAR, 100);
-		return addRolePermissions (accountid, null, role, resourceid, cal.getTime());
+		return addRolePermissions (accountid, null, roleid, resourceid, cal.getTime());
 	}
 	
 	
-	public boolean addRolePermissions (Long accountid, Long subscriptionid, String role, Long resourceid, Date expireddt) {
+	public boolean addRolePermissions (Long accountid, Long subscriptionid, Long roleid, Long resourceid, Date expireddt) {
 		Session session = this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<Permissioninfo> permissionInfoList = session
-				.createQuery("select p from Permissioninfo p where p.associatedrole=:role and p.isactive=:isactive")
-				.setString("role", role)
+				.createQuery("select p from Permissioninfo p where p.roleid=:roleid and p.isactive=:isactive")
+				.setLong("roleid", roleid)
 				.setByte("isactive", (byte)1)
 				.list();
 		for (Permissioninfo permissionInfoItem: permissionInfoList) {
 			Permission permission = new Permission();
 			permission.setAccountid(accountid);
 			permission.setSubscriptionid(subscriptionid);
-			permission.setPermissionstring(permissionInfoItem.getValue());
+			permission.setPermissionstring(permissionInfoItem.getTitle());
 			permission.setIsactive((byte)1);
 			permission.setStartdt(new Date());
 			permission.setExpireddt(expireddt);
@@ -99,19 +99,19 @@ public class PermissionDao extends BaseDao<Permission> {
 	}
 	
 	
-	public boolean addRolePermissions (Long accountid, String role) {
+	public boolean addRolePermissions (Long accountid, Long roleid) {
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.YEAR, 100);
-		return addRolePermissions (accountid, null, role, cal.getTime());
+		return addRolePermissions (accountid, null, roleid, cal.getTime());
 	}
 	
 	
-	public boolean addRolePermissions (Long accountid, Long subscriptionid, String role, Date expireddt) {
+	public boolean addRolePermissions (Long accountid, Long subscriptionid, Long roleid, Date expireddt) {
 		Session session = this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<String> permissionList = session
-				.createQuery("select p.value from Permissioninfo p where p.associatedrole=:role and p.isobjectspecific=:isobjectspecific and p.isactive=:isactive")
-				.setString("role", role)
+				.createQuery("select p.title from Permissioninfo p where p.roleid=:roleid and p.isobjectspecific=:isobjectspecific and p.isactive=:isactive")
+				.setLong("roleid", roleid)
 				.setByte("isobjectspecific", (byte)0)
 				.setByte("isactive", (byte)1)
 				.list();
@@ -129,12 +129,12 @@ public class PermissionDao extends BaseDao<Permission> {
 	}
 	
 	
-	public boolean removeRolePermissionsForAccount (Long accountid, String role) {
+	public boolean removeRolePermissionsForAccount (Long accountid, Long roleid) {
 		Session session = this.sessionFactory.getCurrentSession();
 		@SuppressWarnings("unchecked")
 		List<String> permissionList = session
-				.createQuery("select p.value from Permissioninfo p where p.associatedrole=:role and p.isobjectspecific=:isobjectspecific and p.isactive=:isactive")
-				.setString("role", role)
+				.createQuery("select p.title from Permissioninfo p where p.roleid=:roleid and p.isobjectspecific=:isobjectspecific and p.isactive=:isactive")
+				.setLong("role", roleid)
 				.setByte("isobjectspecific", (byte)0)
 				.setByte("isactive", (byte)1)
 				.list();

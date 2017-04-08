@@ -57,9 +57,6 @@ public class AuthNAuthService {
 							account.getPbdkfiterations());
 					if (passwordHash.compareTo(account.getPasswordhash()) == 0) {
 						String uuid = UUID.randomUUID().toString();
-						account.setCurrentauthtoken(uuid);
-						account.setLastactiondt(new Date());
-						account.setLastlogindt(new Date());
 						accountDao.update(account);
 
 						Authorisationtoken authToken = new Authorisationtoken();
@@ -149,7 +146,6 @@ public class AuthNAuthService {
 		Account account = accountDao.getAccountByAuthToken(authToken);
 		if (account != null) {
 			Authorisationtoken authorisationtoken = authorisationtokenDao.getAuthorisationtoken(authToken);
-			account.setCurrentauthtoken(null);
 			authorisationtoken.setIsactive((byte) 0);
 			authorisationtoken.setLastactiondt(new Date());
 			accountDao.update(account);

@@ -129,8 +129,7 @@ public class OauthService {
 				person.setIsactive((byte) 1);
 				person = personDao.add(person);
 				
-				permissionDao.addRolePermissions(account.getId().longValue(), "personall");
-				permissionDao.addRolePermissions(account.getId().longValue(), "persontrainee");
+				permissionDao.addRolePermissions(account.getId(), 1L);
 
 			} else {
 				person = personDao.getPersonByAccountID(account.getId().longValue());
@@ -147,9 +146,6 @@ public class OauthService {
 			}
 
 			String uuid = UUID.randomUUID().toString();
-			account.setCurrentauthtoken(uuid);
-			account.setLastactiondt(new Date());
-			account.setLastlogindt(new Date());
 			accountDao.update(account);
 
 			Authorisationtoken authToken = new Authorisationtoken();

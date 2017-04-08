@@ -104,24 +104,11 @@ public class AccountService {
 			person.setFirstname(accountForm.getFirstname());
 			person.setLastname(accountForm.getLastname());
 			person.setEmail(accountForm.getUsername().toLowerCase());
-			person.setMobilecontactnumber(accountForm.getMobilenumber());
 			person.setIsactive((byte)1);
 			person = personDao.add(person);
 			
 			// Add basic account permissions
-			permissionDao.addRolePermissions(account.getId(), "personall");
-			permissionDao.addRolePermissions(account.getId(), "persontrainee");
-			
-			/*
-			// TODO: Coexistence strategy. For removal later on.
-			User user = new User();
-			user.setFirstName(accountForm.getFirstname());
-			user.setLastName(accountForm.getLastname());
-			user.setEmail(accountForm.getUsername());
-			user.setAccountid(account.getId());
-			user.setContactNumberMobile(accountForm.getMobilenumber());
-			user = userDao.addUser(user);
-			*/
+			permissionDao.addRolePermissions(account.getId(), 1L);
 			
 			// Send activation as a last step after all the above have occured.
 			if (!this.sendActivationEmail(account.getUsername(), account.getActivationhash())) {
@@ -186,7 +173,6 @@ public class AccountService {
 			person.setAccountid(account.getId());
 			person.setFirstname(accountForm.getFirstname());
 			person.setLastname(accountForm.getLastname());
-			person.setMobilecontactnumber(accountForm.getMobilenumber());
 			person.setIsactive((byte)1);
 			personDao.update(person);
 			

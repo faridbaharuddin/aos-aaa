@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.projektinnovatif.aosaaa.dto.Response;
 import com.projektinnovatif.aosaaa.dto.ResponseBuilder;
 import com.projektinnovatif.aosaaa.form.PersonForm;
-import com.projektinnovatif.aosaaa.model.Account;
 import com.projektinnovatif.aosaaa.model.Person;
 import com.projektinnovatif.aosaaa.service.AccountService;
 import com.projektinnovatif.aosaaa.service.AuthNAuthService;
@@ -124,10 +123,6 @@ public class PersonController {
 		if (authToken != null && 
 			authService.checkIfAuthorised(authToken, "person:view-self")) {
 			Person person = personService.getPerson(authService.getPersonIdFromAuthToken(authToken));
-			Account account = accountService.getAccount(person.getAccountid());
-			person.setAuthtoken(authToken);
-			person.setRole(account.getAccountrole());
-			person.setSubscriptiontype(account.getAccounttier());
 			return ResponseBuilder.OK(person);
 		} else {
 			return ResponseBuilder.UNAUTHORIZED();

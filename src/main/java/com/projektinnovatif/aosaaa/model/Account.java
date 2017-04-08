@@ -44,45 +44,13 @@ public class Account implements BaseModel, Serializable {
 
 	private String passwordresethash;
 	
-	private String currentauthtoken;
-
 	private String hashsalt;
 
 	private byte isactivated;
 	
 	private byte ispasswordresetrequested;
 
-	public Date getPasswordresethashsentdt() {
-		return passwordresethashsentdt;
-	}
-
-	public void setPasswordresethashsentdt(Date passwordresethashsentdt) {
-		this.passwordresethashsentdt = passwordresethashsentdt;
-	}
-
-	public String getPasswordresethash() {
-		return passwordresethash;
-	}
-
-	public void setPasswordresethash(String passwordresethash) {
-		this.passwordresethash = passwordresethash;
-	}
-
-	public byte getIspasswordresetrequested() {
-		return ispasswordresetrequested;
-	}
-
-	public void setIspasswordresetrequested(byte ispasswordresetrequested) {
-		this.ispasswordresetrequested = ispasswordresetrequested;
-	}
-
 	private byte isactive;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastactiondt;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastlogindt;
 
 	private String mobilenumber;
 
@@ -100,6 +68,7 @@ public class Account implements BaseModel, Serializable {
 	@JsonIgnore
 	private Timestamp createddt;
 	
+
 	public Account() {
 	}
 
@@ -173,14 +142,6 @@ public class Account implements BaseModel, Serializable {
 		this.activationhash = activationhash;
 	}
 
-	public String getCurrentauthtoken() {
-		return this.currentauthtoken;
-	}
-
-	public void setCurrentauthtoken(String currentauthtoken) {
-		this.currentauthtoken = currentauthtoken;
-	}
-
 	public String getHashsalt() {
 		return this.hashsalt;
 	}
@@ -203,22 +164,6 @@ public class Account implements BaseModel, Serializable {
 
 	public void setIsactive(byte isactive) {
 		this.isactive = isactive;
-	}
-
-	public Date getLastactiondt() {
-		return this.lastactiondt;
-	}
-
-	public void setLastactiondt(Date lastactiondt) {
-		this.lastactiondt = lastactiondt;
-	}
-
-	public Date getLastlogindt() {
-		return this.lastlogindt;
-	}
-
-	public void setLastlogindt(Date lastlogindt) {
-		this.lastlogindt = lastlogindt;
 	}
 
 	public String getMobilenumber() {
@@ -269,6 +214,30 @@ public class Account implements BaseModel, Serializable {
 		this.createddt = createddt;
 	}
 
+	public Date getPasswordresethashsentdt() {
+		return passwordresethashsentdt;
+	}
+
+	public void setPasswordresethashsentdt(Date passwordresethashsentdt) {
+		this.passwordresethashsentdt = passwordresethashsentdt;
+	}
+
+	public String getPasswordresethash() {
+		return passwordresethash;
+	}
+
+	public void setPasswordresethash(String passwordresethash) {
+		this.passwordresethash = passwordresethash;
+	}
+
+	public byte getIspasswordresetrequested() {
+		return ispasswordresetrequested;
+	}
+
+	public void setIspasswordresetrequested(byte ispasswordresetrequested) {
+		this.ispasswordresetrequested = ispasswordresetrequested;
+	}
+	
 	@Override
 	public HashMap<String, String> checkEntries() {
 		// TODO Auto-generated method stub
